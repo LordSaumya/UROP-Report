@@ -128,6 +128,24 @@ TK
                     \end{itemize}
               \item This was only possible due to the inductive biases of Newton's 2nd and 3rd laws.
           \end{itemize}
+    \item \bibentry{Brunton2016}
+            \begin{itemize}
+                \item Symbolic regression using genetic programming is expensive and may be prone to overfitting.
+                \item Sparsity techniques efficiently identify the relevant terms to reduce the search space. The resulting model thus balances parsimony with accuracy while also avoiding overfitting.
+                \item SINDy leverages the fact that physical systems only have a few relevant terms to promote sparsity.
+                \item \emph{Process}:
+                    \begin{enumerate}
+                        \item A time history of the state is collected and its derivative is numerically approximated. Gaussian noise is added, and the data are organised into two matrices.
+                        \item A library of candidate non-linear functions for the state is created for each column of the state matrix.
+                        \item A sparse regression problem is set up to determine the vector of coefficients that determine which non-linear terms are in $f$.
+                        \item LASSO or other alternative techniques are applied, depending on the context of the problem, to calculate the vector of coefficients.
+                    \end{enumerate}
+                \item Domain knowledge can be used to help choose appropriate variables and non-linear functions, and to exploit simplifying properties like symmetry.
+                \item For the Lorenz system (a system with chaotic dynamics), the model accurately reproduces attractor dynamics, correctly identifies the relevant terms, and determines the coefficients to within 0.03\% of the true value.
+                \item The authors further generalise the SINDy method to an example of vortex shedding (fluid dynamics). For the logistic map, parameters are identifed to within 0.1% of true values.
+                \item SINDy is robust to measurement noise and unavailability of derivative measurements.
+                \item Significant challenges remain in the correct choice of measurement coordinates and the choice of sparsifying function basis.
+            \end{itemize}
 \end{itemize}
 
 \section{Methodology}
